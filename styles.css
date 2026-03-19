@@ -376,6 +376,20 @@ h2 {
   transform: translateY(0);
 }
 
+.write-on {
+  min-height: 1.2em;
+  text-wrap: balance;
+}
+
+.write-on__token {
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.write-on__token.is-visible {
+  opacity: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;

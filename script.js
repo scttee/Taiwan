@@ -58,7 +58,7 @@ function renderImageBlock(block) {
     >
       <div class="story-panel__overlay reveal">
         <p class="story-panel__eyebrow">${block.eyebrow || ''}</p>
-        <p class="story-panel__caption">${block.caption || ''}</p>
+        <p class="story-panel__caption write-on" data-full-text="${escapeAttribute(block.caption || '')}">${block.caption || ''}</p>
       </div>
     </article>
   `;
@@ -67,7 +67,7 @@ function renderImageBlock(block) {
 function renderTextBlock(block) {
   return `
     <article class="story-panel story-panel--text ${blockOffsetClass(block.offset)} reveal" data-parallax>
-      <p class="story-fragment">${block.text || ''}</p>
+      <p class="story-fragment write-on" data-full-text="${escapeAttribute(block.text || '')}">${block.text || ''}</p>
     </article>
   `;
 }
@@ -160,13 +160,77 @@ function hydrateExternalLinks() {
   }
 }
 
+function animateWriteOn(element) {
+  if (!element || element.dataset.animated === 'true') return;
+
+  const fullText = element.dataset.fullText || element.textContent || '';
+  element.dataset.animated = 'true';
+
+  const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion) {
+    element.textContent = fullText;
+    return;
+  }
+
+  const fragments = fullText.match(/(\S+|\s+)/g) || [];
+  const wordNodes = [];
+  const fragmentRoot = document.createDocumentFragment();
+
+  fragments.forEach((fragment) => {
+    if (/^\s+$/.test(fragment)) {
+      fragmentRoot.appendChild(document.createTextNode(fragment));
+      return;
+    }
+
+    const token = document.createElement('span');
+    token.className = 'write-on__token';
+    token.textContent = fragment;
+    fragmentRoot.appendChild(token);
+    wordNodes.push(token);
+  });
+
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
+
+  element.appendChild(fragmentRoot);
+
+  let index = 0;
+  const tick = () => {
+    if (index >= wordNodes.length) return;
+
+    wordNodes[index].classList.add('is-visible');
+    index += 1;
+
+    if (index < wordNodes.length) {
+      window.setTimeout(tick, 90);
+    }
+  };
+
+  tick();
+}
+
+function animateWriteOnsWithin(root) {
+  if (!root) return;
+
+  if (root.classList && root.classList.contains('write-on')) {
+    animateWriteOn(root);
+  }
+
+  if (typeof root.querySelectorAll !== 'function') return;
+  root.querySelectorAll('.write-on').forEach((element) => animateWriteOn(element));
+}
+
 function wireReveals() {
   const revealNodes = Array.from(document.querySelectorAll('.reveal'));
 
   if (revealNodes.length === 0) return;
 
   if (!('IntersectionObserver' in window)) {
-    revealNodes.forEach((node) => node.classList.add('is-visible'));
+    revealNodes.forEach((node) => {
+      node.classList.add('is-visible');
+      animateWriteOnsWithin(node);
+    });
     return;
   }
 
@@ -175,6 +239,7 @@ function wireReveals() {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         entry.target.classList.add('is-visible');
+        animateWriteOnsWithin(entry.target);
         observer.unobserve(entry.target);
       });
     },
@@ -226,9 +291,40 @@ function animateCoordinates(day) {
 
   if (!coordinateNode || !day || !day.coordinates) return;
 
-  const lat = Number(day.coordinates.lat || 0).toFixed(4);
-  const lon = Number(day.coordinates.lon || 0).toFixed(4);
-  coordinateNode.textContent = `Lat ${lat}° · Lon ${lon}°`;
+  const targetLat = Number(day.coordinates.lat || 0);
+  const targetLon = Number(day.coordinates.lon || 0);
+  const duration = 1600;
+  const scrambleDuration = 700;
+  const start = performance.now();
+
+  const randomNear = (value, spread) => value + (Math.random() * spread * 2 - spread);
+
+  const frame = (now) => {
+    const elapsed = now - start;
+    const progress = Math.min(1, elapsed / duration);
+
+    if (elapsed < scrambleDuration) {
+      coordinateNode.textContent = `Lat ${randomNear(targetLat, 2.2).toFixed(4)}° · Lon ${randomNear(targetLon, 2.2).toFixed(4)}°`;
+      window.requestAnimationFrame(frame);
+      return;
+    }
+
+    const settleProgress = Math.min(1, (elapsed - scrambleDuration) / (duration - scrambleDuration));
+    const eased = 1 - Math.pow(1 - settleProgress, 3);
+    const currentLat = randomNear(targetLat, 0.4) * (1 - eased) + targetLat * eased;
+    const currentLon = randomNear(targetLon, 0.4) * (1 - eased) + targetLon * eased;
+
+    coordinateNode.textContent = `Lat ${currentLat.toFixed(4)}° · Lon ${currentLon.toFixed(4)}°`;
+
+    if (progress < 1) {
+      window.requestAnimationFrame(frame);
+      return;
+    }
+
+    coordinateNode.textContent = `Lat ${targetLat.toFixed(4)}° · Lon ${targetLon.toFixed(4)}°`;
+  };
+
+  window.requestAnimationFrame(frame);
 }
 
 async function loadDayPhotos(dayId) {
