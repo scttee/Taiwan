@@ -168,7 +168,10 @@ function animateWriteOn(element) {
 
   const fullText = element.dataset.fullText || element.textContent || '';
   element.dataset.animated = 'true';
+<<<<<<< codex/create-interactive-travel-journal-website-2dyhqg
+=======
   element.textContent = '';
+>>>>>>> main
 
   const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reducedMotion) {
@@ -176,6 +179,35 @@ function animateWriteOn(element) {
     return;
   }
 
+<<<<<<< codex/create-interactive-travel-journal-website-2dyhqg
+  const fragments = fullText.match(/(\S+|\s+)/g) || [];
+  const wordNodes = [];
+  const fragmentRoot = document.createDocumentFragment();
+
+  fragments.forEach((fragment) => {
+    if (/^\s+$/.test(fragment)) {
+      fragmentRoot.append(document.createTextNode(fragment));
+      return;
+    }
+
+    const token = document.createElement('span');
+    token.className = 'write-on__token';
+    token.textContent = fragment;
+    fragmentRoot.append(token);
+    wordNodes.push(token);
+  });
+
+  element.replaceChildren(fragmentRoot);
+
+  let index = 0;
+  const tick = () => {
+    if (index >= wordNodes.length) return;
+
+    wordNodes[index].classList.add('is-visible');
+    index += 1;
+
+    if (index < wordNodes.length) {
+=======
   const words = fullText.trim().split(/\s+/).filter(Boolean);
   let index = 0;
 
@@ -183,6 +215,7 @@ function animateWriteOn(element) {
     index += 1;
     element.textContent = words.slice(0, index).join(' ');
     if (index < words.length) {
+>>>>>>> main
       window.setTimeout(tick, 90);
     }
   };
