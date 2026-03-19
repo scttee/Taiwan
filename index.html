@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taiwan Adventure</title>
+    <meta
+      name="description"
+      content="An editorial Taiwan bikepacking journal with a dark cinematic landing page and a flexible Day 001 photo-story layout."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <section class="hero" id="hero">
+        <div class="hero__fallback" aria-hidden="true"></div>
+        <img class="hero__photo" id="hero-photo" alt="Taipei skyline framed by trees" hidden />
+        <div class="hero__wash" aria-hidden="true"></div>
+        <div class="hero__content shell">
+          <p class="hero__kicker">Taiwan bikepacking journal</p>
+          <h1>Taiwan Adventure</h1>
+          <p class="hero__lede">
+            Taiwan begins before the first ride. In the dark before departure, with the bike boxed and the map still folded, the space is opening. I want this to hold what the body knows first: air, roads, food, fatigue, and whatever is still here by night.
+          </p>
+          <div class="hero__emojis" aria-label="Trip motifs">
+            <span>🚲</span>
+            <span>🗺️</span>
+            <span>🎵</span>
+            <span>🧋</span>
+            <span>🥟</span>
+            <span>🇹🇼</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="day-story shell" aria-labelledby="day-001-title">
+        <aside class="day-story__intro">
+          <div class="day-story__sticky">
+            <p class="day-story__label">Day 001</p>
+            <h2 id="day-001-title">In transit</h2>
+            <p class="day-story__summary">
+              Before the road, there is transit. Terminal light, stale cabin air, the weight of the bike box, and that thin line between leaving and arriving.
+            </p>
+          </div>
+        </aside>
+
+        <div class="day-story__panels" id="day-panels-root"></div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
