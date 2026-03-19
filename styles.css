@@ -197,7 +197,9 @@ h2 {
   min-height: 42vh;
   display: grid;
   align-items: center;
-  background: linear-gradient(180deg, rgba(17, 23, 21, 0.92) 0%, rgba(10, 13, 12, 1) 100%);
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
 }
 
 .story-panel--details {
@@ -205,6 +207,11 @@ h2 {
   background: transparent;
   box-shadow: none;
   overflow: visible;
+}
+
+.story-panel--cascade {
+  margin-top: -4rem;
+  z-index: 2;
 }
 
 .story-panel--offset-right {
@@ -241,15 +248,15 @@ h2 {
 
 .story-fragment {
   max-width: 13ch;
-  padding: 1.5rem 2rem;
+  padding: 0;
 }
 
 .story-panel__card {
-  background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
-  border: 1px solid var(--line);
-  border-radius: 28px;
-  padding: 1.5rem;
-  box-shadow: var(--shadow);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
 }
 
 .journal-card {
@@ -275,10 +282,10 @@ h2 {
 }
 
 .meta-chip {
-  padding: 1rem;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.02);
+  padding: 1rem 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
 }
 
 .detail-label {

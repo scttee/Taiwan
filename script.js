@@ -95,9 +95,10 @@ function renderDetailsBlock(block) {
 }
 
 function renderImageBlock(block) {
+  const cascadeClass = block.cascade ? 'story-panel--cascade' : '';
   return `
     <article
-      class="story-panel story-panel--image story-panel--${block.variant} ${blockOffsetClass(block.offset)}"
+      class="story-panel story-panel--image story-panel--${block.variant} ${blockOffsetClass(block.offset)} ${cascadeClass}"
       data-parallax
       style="background-image: linear-gradient(180deg, rgba(8, 12, 12, 0.1), rgba(8, 12, 12, 0.74)), url('${block.image}')"
     >
@@ -224,19 +225,33 @@ function animateCoordinates(day) {
 
   const targetLat = Number(day.coordinates.lat || 0);
   const targetLon = Number(day.coordinates.lon || 0);
-  const duration = 1400;
+  const duration = 1600;
+  const scrambleDuration = 700;
   const start = performance.now();
 
+  const randomNear = (value, spread) => value + (Math.random() * spread * 2 - spread);
+
   const frame = (now) => {
-    const progress = Math.min(1, (now - start) / duration);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    const currentLat = targetLat * eased;
-    const currentLon = targetLon * eased;
+    const elapsed = now - start;
+    const progress = Math.min(1, elapsed / duration);
+
+    if (elapsed < scrambleDuration) {
+      coordinateNode.textContent = `Lat ${randomNear(targetLat, 2.2).toFixed(4)}° · Lon ${randomNear(targetLon, 2.2).toFixed(4)}°`;
+      window.requestAnimationFrame(frame);
+      return;
+    }
+
+    const settleProgress = Math.min(1, (elapsed - scrambleDuration) / (duration - scrambleDuration));
+    const eased = 1 - Math.pow(1 - settleProgress, 3);
+    const currentLat = randomNear(targetLat, 0.4) * (1 - eased) + targetLat * eased;
+    const currentLon = randomNear(targetLon, 0.4) * (1 - eased) + targetLon * eased;
 
     coordinateNode.textContent = `Lat ${currentLat.toFixed(4)}° · Lon ${currentLon.toFixed(4)}°`;
 
     if (progress < 1) {
       window.requestAnimationFrame(frame);
+    } else {
+      coordinateNode.textContent = `Lat ${targetLat.toFixed(4)}° · Lon ${targetLon.toFixed(4)}°`;
     }
   };
 
@@ -280,6 +295,7 @@ function hydrateDayWithPhotos(day, localPhotos) {
     type: 'image',
     variant: extraIndex % 2 === 0 ? 'portrait' : 'landscape',
     offset: extraIndex % 2 === 0 ? 'right' : 'left',
+    cascade: extraIndex % 2 === 1,
     image: photo,
     eyebrow: `Photo ${String(photoIndex + extraIndex + 1).padStart(2, '0')}`,
     caption: 'Still here. Another fragment from the day.'
