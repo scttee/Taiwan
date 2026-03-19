@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taiwan Adventure</title>
+    <meta
+      name="description"
+      content="A cinematic landing page for a Taiwan bikepacking adventure, ready to reveal daily notes, photos, food, music, and mileage over time."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Patrick+Hand&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-bg" aria-hidden="true"></div>
+
+    <main class="landing">
+      <section class="hero-shell">
+        <div class="hero-art" aria-hidden="true">
+          <span class="sticker sticker--sun">☀️</span>
+          <span class="sticker sticker--bike">🚲</span>
+          <span class="sticker sticker--tea">🧋</span>
+          <span class="sticker sticker--mountain">⛰️</span>
+          <span class="sticker sticker--music">🎵</span>
+          <span class="sticker sticker--flag">🇹🇼</span>
+          <span class="sticker sticker--heart">❤️</span>
+          <span class="sticker sticker--camera">📷</span>
+          <span class="sticker sticker--dumpling">🥟</span>
+          <span class="sticker sticker--map">🗺️</span>
+        </div>
+
+        <div class="title-card">
+          <p class="eyebrow">Bikepacking journal</p>
+          <h1>Taiwan Adventure</h1>
+          <p class="subtitle">
+            A soft little landing page for the trip — the daily stories, photos, food notes, playlists, and ride stats can quietly appear here one day at a time.
+          </p>
+        </div>
+      </section>
+
+      <section class="future-strip" aria-label="Planned trip details">
+        <p class="future-strip__label">To be revealed as the trip unfolds</p>
+        <div class="future-strip__items">
+          <span>Photos</span>
+          <span>Daily note</span>
+          <span>What I ate</span>
+          <span>What I listened to</span>
+          <span>Distance ridden</span>
+          <span>Map pins</span>
+        </div>
+      </section>
+
+      <section class="journal-preview" aria-labelledby="day-001-title">
+        <div class="journal-preview__header">
+          <p class="eyebrow">Day 001</p>
+          <h2 id="day-001-title">Flying journey.</h2>
+        </div>
+        <div id="day-preview-root"></div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,375 @@
+:root {
+  --bg: #8bd94b;
+  --bg-deep: #66bc2c;
+  --paper: #fffaf1;
+  --paper-soft: rgba(255, 250, 241, 0.82);
+  --ink: #4f2b12;
+  --ink-soft: rgba(79, 43, 18, 0.78);
+  --accent: #e97328;
+  --accent-deep: #b85718;
+  --cream: #fffdf7;
+  --shadow: 0 18px 45px rgba(73, 49, 17, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+  overflow-x: hidden;
+}
+
+.page-bg {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 18%, rgba(255, 255, 255, 0.28), transparent 18%),
+    radial-gradient(circle at 82% 14%, rgba(255, 255, 255, 0.22), transparent 17%),
+    radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.12), transparent 22%);
+  pointer-events: none;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+.landing {
+  min-height: 100vh;
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+  display: grid;
+  align-content: center;
+  gap: 2rem;
+  padding: 2rem 0 3rem;
+}
+
+.hero-shell {
+  position: relative;
+  min-height: min(78vh, 860px);
+  display: grid;
+  place-items: center;
+  overflow: visible;
+}
+
+.hero-art {
+  position: absolute;
+  inset: 0;
+}
+
+.sticker {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cream);
+  border: 8px solid rgba(255, 252, 245, 0.95);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  line-height: 1;
+  user-select: none;
+}
+
+.sticker--sun {
+  top: 2%;
+  left: 2%;
+  width: 118px;
+  height: 118px;
+  font-size: 3.6rem;
+  transform: rotate(-12deg);
+}
+
+.sticker--bike {
+  top: 10%;
+  left: 24%;
+  width: 210px;
+  height: 126px;
+  font-size: 4rem;
+  transform: rotate(-4deg);
+}
+
+.sticker--tea {
+  top: 30%;
+  left: 4%;
+  width: 108px;
+  height: 150px;
+  font-size: 3.7rem;
+  transform: rotate(-8deg);
+}
+
+.sticker--mountain {
+  top: 8%;
+  right: 12%;
+  width: 158px;
+  height: 122px;
+  font-size: 4rem;
+  transform: rotate(6deg);
+}
+
+.sticker--music {
+  top: 14%;
+  right: 29%;
+  width: 78px;
+  height: 78px;
+  font-size: 2.4rem;
+  transform: rotate(12deg);
+}
+
+.sticker--flag {
+  right: 5%;
+  bottom: 14%;
+  width: 128px;
+  height: 92px;
+  font-size: 3rem;
+  transform: rotate(-4deg);
+}
+
+.sticker--heart {
+  right: 2%;
+  top: 31%;
+  width: 72px;
+  height: 72px;
+  font-size: 2rem;
+  transform: rotate(9deg);
+}
+
+.sticker--camera {
+  left: 28%;
+  bottom: 10%;
+  width: 98px;
+  height: 82px;
+  font-size: 2.7rem;
+  transform: rotate(4deg);
+}
+
+.sticker--dumpling {
+  left: 6%;
+  bottom: 3%;
+  width: 164px;
+  height: 110px;
+  font-size: 3.3rem;
+  transform: rotate(-4deg);
+}
+
+.sticker--map {
+  right: 23%;
+  bottom: 1%;
+  width: 116px;
+  height: 138px;
+  font-size: 3.6rem;
+  transform: rotate(-9deg);
+}
+
+.title-card {
+  position: relative;
+  z-index: 2;
+  width: min(700px, calc(100% - 2rem));
+  padding: 2.2rem 2rem 2.35rem;
+  text-align: center;
+  background: var(--paper-soft);
+  backdrop-filter: blur(10px);
+  border: 6px solid rgba(255, 252, 245, 0.98);
+  border-radius: 40px;
+  box-shadow: 0 24px 65px rgba(73, 49, 17, 0.2);
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(3.8rem, 10vw, 7.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  color: var(--paper);
+  -webkit-text-stroke: 10px var(--accent);
+  paint-order: stroke fill;
+  text-shadow: 0 10px 22px rgba(79, 43, 18, 0.14);
+}
+
+.subtitle {
+  width: min(54ch, 100%);
+  margin: 1.15rem auto 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+.future-strip {
+  display: grid;
+  gap: 0.9rem;
+  justify-items: center;
+}
+
+.future-strip__label {
+  margin: 0;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.4rem;
+  color: rgba(255, 251, 242, 0.94);
+}
+
+.future-strip__items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.future-strip__items span {
+  padding: 0.72rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 250, 241, 0.2);
+  border: 1px solid rgba(255, 253, 247, 0.32);
+  color: rgba(255, 252, 245, 0.98);
+  font-size: 0.95rem;
+  font-weight: 700;
+  backdrop-filter: blur(10px);
+}
+
+.journal-preview {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+
+.journal-preview__header {
+  text-align: center;
+}
+
+.journal-card {
+  background: rgba(255, 250, 241, 0.9);
+  border: 6px solid rgba(255, 252, 245, 0.98);
+  border-radius: 34px;
+  box-shadow: 0 24px 65px rgba(73, 49, 17, 0.16);
+  padding: 1.5rem;
+}
+
+.journal-card__grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 1rem;
+}
+
+.journal-card__story p {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.journal-card__meta {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.meta-chip {
+  display: block;
+  padding: 0.9rem 1rem;
+  border-radius: 20px;
+  background: rgba(233, 115, 40, 0.08);
+  border: 1px solid rgba(184, 87, 24, 0.16);
+}
+
+.meta-chip strong {
+  display: block;
+  margin-bottom: 0.18rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+}
+
+.meta-chip span {
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 960px) {
+  .journal-card__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-shell {
+    min-height: 74vh;
+  }
+
+  .sticker--bike,
+  .sticker--mountain {
+    width: 168px;
+    height: 108px;
+  }
+
+  .sticker--dumpling {
+    width: 138px;
+    height: 96px;
+  }
+}
+
+@media (max-width: 720px) {
+  .landing {
+    width: min(100% - 1rem, 100%);
+    padding-top: 1.25rem;
+  }
+
+  .journal-card {
+    padding: 1.2rem;
+    border-radius: 26px;
+  }
+
+  .hero-shell {
+    min-height: 70vh;
+  }
+
+  .title-card {
+    padding: 1.6rem 1.25rem 1.8rem;
+    border-radius: 28px;
+  }
+
+  .sticker--bike,
+  .sticker--mountain,
+  .sticker--dumpling,
+  .sticker--map {
+    display: none;
+  }
+
+  .sticker--sun {
+    width: 92px;
+    height: 92px;
+    font-size: 2.8rem;
+  }
+
+  .sticker--tea {
+    width: 86px;
+    height: 122px;
+    font-size: 3rem;
+  }
+
+  .sticker--flag {
+    width: 104px;
+    height: 74px;
+    font-size: 2.4rem;
+  }
+
+  h1 {
+    -webkit-text-stroke: 7px var(--accent);
+  }
+
+  .subtitle {
+    font-size: 0.98rem;
+  }
+}
