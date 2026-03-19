@@ -1,6 +1,5 @@
-Drop Day 001 photos in this folder using these filenames:
+Just drop any Day 001 photos in this folder.
 
-- `departure.jpg`
-- `arrival.jpg`
+The page will automatically pick them up in filename order and use them in the Day 001 story layout.
 
-Then edit `content/day-001.json` if you want to change captions, add more text blocks, or swap image paths.
+If you add more photos than the current layout expects, the site will append extra image panels automatically.

@@ -179,6 +179,54 @@ function wireReveals() {
   }
 }
 
+async function loadDayPhotos(dayId) {
+  try {
+    const response = await fetch(`api/day-photos?day=day-${dayId}`, { cache: 'no-store' });
+    if (!response.ok) {
+      return [];
+    }
+    const data = await response.json();
+    return Array.isArray(data.photos) ? data.photos : [];
+  } catch (error) {
+    return [];
+  }
+}
+
+function hydrateDayWithPhotos(day, localPhotos) {
+  if (!Array.isArray(localPhotos) || localPhotos.length === 0) {
+    return day;
+  }
+
+  let photoIndex = 0;
+  const blocks = day.blocks.map((block) => {
+    if (block.type !== 'image') {
+      return block;
+    }
+
+    const localPhoto = localPhotos[photoIndex];
+    photoIndex += 1;
+
+    return {
+      ...block,
+      image: localPhoto || block.image
+    };
+  });
+
+  const extraPhotos = localPhotos.slice(photoIndex).map((photo, extraIndex) => ({
+    type: 'image',
+    variant: extraIndex % 2 === 0 ? 'portrait' : 'landscape',
+    offset: extraIndex % 2 === 0 ? 'right' : 'left',
+    image: photo,
+    eyebrow: `Photo ${String(photoIndex + extraIndex + 1).padStart(2, '0')}`,
+    caption: 'Still here. Another fragment from the day.'
+  }));
+
+  return {
+    ...day,
+    blocks: [...blocks, ...extraPhotos]
+  };
+}
+
 async function loadDays() {
   try {
     const response = await fetch('content/day-001.json', { cache: 'no-store' });
@@ -188,7 +236,8 @@ async function loadDays() {
     }
 
     const day = await response.json();
-    return [day];
+    const localPhotos = await loadDayPhotos(day.id);
+    return [hydrateDayWithPhotos(day, localPhotos)];
   } catch (error) {
     return fallbackDays;
   }
