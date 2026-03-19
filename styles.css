@@ -95,6 +95,56 @@ h2 {
   padding: 3rem 0;
 }
 
+.hero__link-card {
+  justify-self: end;
+  width: min(100%, 22rem);
+  margin-top: 1rem;
+  padding: 1rem 1.1rem 1.1rem;
+  border: 1px solid rgba(243, 240, 232, 0.16);
+  border-radius: 20px;
+  background: rgba(7, 11, 10, 0.62);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 0.7rem;
+}
+
+.hero__link-label {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: rgba(243, 240, 232, 0.68);
+}
+
+.hero__link-copy {
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 0.96rem;
+}
+
+.hero__link-button {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.72rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(126, 168, 127, 0.45);
+  color: var(--text);
+  text-decoration: none;
+  background: rgba(126, 168, 127, 0.14);
+  font-weight: 600;
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.hero__link-button:hover,
+.hero__link-button:focus-visible {
+  transform: translateY(-1px);
+  background: rgba(126, 168, 127, 0.24);
+  border-color: rgba(126, 168, 127, 0.72);
+}
+
 .hero__kicker,
 .day-story__label,
 .story-panel__eyebrow,
@@ -367,6 +417,11 @@ h2 {
 
   .hero__content {
     padding: 2rem 0;
+  }
+
+  .hero__link-card {
+    justify-self: stretch;
+    width: 100%;
   }
 
   h1 {
