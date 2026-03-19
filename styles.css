@@ -156,9 +156,10 @@ h1 {
 }
 
 .day-story__summary {
-  max-width: 28ch;
+  max-width: 32ch;
   color: var(--muted);
-  line-height: 1.7;
+  line-height: 1.8;
+  font-size: 1.05rem;
 }
 
 h2 {
@@ -170,7 +171,7 @@ h2 {
 
 .day-story__panels {
   display: grid;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .story-panel {
@@ -214,7 +215,7 @@ h2 {
 }
 
 .story-panel--cascade {
-  margin-top: -4rem;
+  margin-top: -2rem;
   z-index: 2;
 }
 
@@ -234,10 +235,10 @@ h2 {
 }
 
 .story-panel__overlay {
-  padding: 2rem;
+  padding: 2.5rem;
   display: grid;
-  gap: 0.55rem;
-  justify-items: center;
+  gap: 0.85rem;
+  justify-items: start;
 }
 
 .story-panel__caption,
@@ -249,27 +250,28 @@ h2 {
 }
 
 .story-panel__caption {
-  max-width: 14ch;
+  max-width: 20ch;
+  text-align: left;
 }
 
 .story-fragment {
-  max-width: 16ch;
-  padding: 0;
-  margin: 0 auto;
-  text-align: center;
+  max-width: 24ch;
+  padding: 0 0.25rem;
+  margin: 0;
+  text-align: left;
 }
 
 .story-panel__card {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--line);
   border-radius: 24px;
-  padding: 1.25rem 1.4rem;
+  padding: 1.9rem 2rem;
   box-shadow: none;
 }
 
 .journal-card {
   display: grid;
-  gap: 1.5rem;
+  gap: 1.9rem;
 }
 
 .journal-card__story {
@@ -280,18 +282,18 @@ h2 {
 .journal-card__story p {
   font-family: var(--font-serif);
   color: var(--muted);
-  line-height: 1.8;
-  font-size: 1.05rem;
+  line-height: 1.9;
+  font-size: 1.22rem;
 }
 
 .journal-card__meta {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.9rem;
+  gap: 1.2rem 1.6rem;
 }
 
 .meta-chip {
-  padding: 0.95rem 0;
+  padding: 1.15rem 0;
   border-top: 1px solid var(--line);
   border-radius: 0;
   background: transparent;
@@ -300,14 +302,16 @@ h2 {
 .detail-label {
   font-family: var(--font-sans);
   display: block;
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.55rem;
+  font-size: 0.76rem;
 }
 
 .meta-chip span {
   font-family: var(--font-sans);
   display: block;
   color: var(--text);
-  line-height: 1.55;
+  line-height: 1.65;
+  font-size: 1rem;
 }
 
 .reveal {
@@ -400,8 +404,8 @@ h2 {
 
 
 .story-panel__caption {
-  max-width: 16ch;
-  text-align: center;
+  max-width: 20ch;
+  text-align: left;
 }
 
 .write-on {
