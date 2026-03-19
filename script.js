@@ -204,6 +204,20 @@ function wireParallax() {
   window.addEventListener('resize', update);
 }
 
+
+function hydrateDayHeader(day) {
+  const titleNode = document.querySelector('#day-title');
+  const summaryNode = document.querySelector('#day-summary');
+
+  if (titleNode && day?.title) {
+    titleNode.textContent = day.title;
+  }
+
+  if (summaryNode && day?.summary) {
+    summaryNode.textContent = day.summary;
+  }
+}
+
 function animateCoordinates(day) {
   const coordinateNode = document.querySelector('#day-coordinates');
   if (!coordinateNode || !day || !day.coordinates) return;
@@ -311,6 +325,7 @@ if (typeof window !== 'undefined') {
       panelsRoot.innerHTML = renderDayBlocks(firstDay);
     }
 
+    hydrateDayHeader(firstDay);
     animateCoordinates(firstDay);
     wireReveals();
     wireParallax();

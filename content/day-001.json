@@ -1,7 +1,7 @@
 {
   "id": "001",
   "title": "In transit",
-  "summary": "Before the road, there is transit. Terminal light, stale cabin air, the weight of the bike box, and that thin line between leaving and arriving.",
+  "summary": "Sydney before the airport. A run to loosen the body, coffee in hand, and that suspended hour of watching people move through departures.",
   "blocks": [
     {
       "type": "image",
@@ -9,22 +9,34 @@
       "offset": "right",
       "image": "assets/photos/day-001/departure.jpg",
       "eyebrow": "Departure",
-      "caption": "The city falls away slowly. My head is crowded, but the body keeps moving."
+      "caption": "The morning started in Sydney. Legs awake, coffee warm, departure boards glowing."
     },
     {
       "type": "text",
       "offset": "left",
-      "text": "Early light on the terminal glass. Coffee that barely touches the nerves. The bike box awkward against my legs. Nothing resolved. Just motion."
+      "text": "I ran before the airport because I needed to move. Just enough to wake the legs and quiet the noise a little. Then coffee, a seat, a book open but not really held for long. I kept looking up, wondering where everyone was going."
     },
     {
       "type": "details",
       "offset": "right",
-      "story": "This day is all thresholds. Home behind me. Taiwan still ahead. I keep circling the same feeling: not fear exactly, not ease either. Just the strange quiet that comes when everything practical is done and there is nothing left but to go. The body knows it before the mind does. Shoulders tight. Breath shallow. Then, little by little, the space is opening.",
+      "story": "Sydney felt clear and slightly unreal in that pre-departure way. The body had already started the day before the flight did. Feet on pavement. Breath working. Then the stillness of the terminal, where everything narrows into waiting. I sat there with coffee and read in fragments, more interested in faces, bags, departures, the pull of elsewhere. Excited, yes. But also aware of how thin the line is between ordinary routine and leaving.",
       "details": [
-        { "label": "What I listened to", "value": "Boarding calls, cabin air, a playlist low in my ears." },
-        { "label": "What I ate", "value": "Airport coffee, something warm, something easy." },
-        { "label": "Distance ridden", "value": "0 km. Still here, not moving under my own power yet." },
-        { "label": "Map pins", "value": "Home. Airport. Arrival. Foundations, not mileage." }
+        {
+          "label": "What I listened to",
+          "value": "Midnight Sun \u2014 Zara Larsson."
+        },
+        {
+          "label": "What I ate",
+          "value": "Coffee before the airport, then whatever felt simple enough to travel with."
+        },
+        {
+          "label": "Distance ridden",
+          "value": "No riding yet. Just a run before departures."
+        },
+        {
+          "label": "Map pins",
+          "value": "Sydney. Airport. The next point not visible yet."
+        }
       ]
     },
     {
@@ -40,5 +52,9 @@
       "offset": "narrow",
       "text": "By the end of the day I am carrying the same body into a different place. Not settled. Not clear. But pointed somewhere."
     }
-  ]
+  ],
+  "coordinates": {
+    "lat": -33.8688,
+    "lon": 151.2093
+  }
 }
