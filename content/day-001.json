@@ -1,0 +1,44 @@
+{
+  "id": "001",
+  "title": "In transit",
+  "summary": "Before the road, there is transit. Terminal light, stale cabin air, the weight of the bike box, and that thin line between leaving and arriving.",
+  "blocks": [
+    {
+      "type": "image",
+      "variant": "portrait",
+      "offset": "right",
+      "image": "assets/photos/day-001/departure.jpg",
+      "eyebrow": "Departure",
+      "caption": "The city falls away slowly. My head is crowded, but the body keeps moving."
+    },
+    {
+      "type": "text",
+      "offset": "left",
+      "text": "Early light on the terminal glass. Coffee that barely touches the nerves. The bike box awkward against my legs. Nothing resolved. Just motion."
+    },
+    {
+      "type": "details",
+      "offset": "right",
+      "story": "This day is all thresholds. Home behind me. Taiwan still ahead. I keep circling the same feeling: not fear exactly, not ease either. Just the strange quiet that comes when everything practical is done and there is nothing left but to go. The body knows it before the mind does. Shoulders tight. Breath shallow. Then, little by little, the space is opening.",
+      "details": [
+        { "label": "What I listened to", "value": "Boarding calls, cabin air, a playlist low in my ears." },
+        { "label": "What I ate", "value": "Airport coffee, something warm, something easy." },
+        { "label": "Distance ridden", "value": "0 km. Still here, not moving under my own power yet." },
+        { "label": "Map pins", "value": "Home. Airport. Arrival. Foundations, not mileage." }
+      ]
+    },
+    {
+      "type": "image",
+      "variant": "landscape",
+      "offset": "left",
+      "image": "assets/photos/day-001/arrival.jpg",
+      "eyebrow": "Arrival",
+      "caption": "The air changes first. Then the light. Then the small sense that something has opened."
+    },
+    {
+      "type": "text",
+      "offset": "narrow",
+      "text": "By the end of the day I am carrying the same body into a different place. Not settled. Not clear. But pointed somewhere."
+    }
+  ]
+}
