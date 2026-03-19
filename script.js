@@ -176,18 +176,28 @@ function animateWriteOn(element) {
     return;
   }
 
-  const chars = Array.from(fullText);
+  const words = fullText.trim().split(/\s+/).filter(Boolean);
   let index = 0;
 
   const tick = () => {
     index += 1;
-    element.textContent = chars.slice(0, index).join('');
-    if (index < chars.length) {
-      window.setTimeout(tick, 18);
+    element.textContent = words.slice(0, index).join(' ');
+    if (index < words.length) {
+      window.setTimeout(tick, 90);
     }
   };
 
   tick();
+}
+
+function animateWriteOnsWithin(root) {
+  if (!root) return;
+
+  if (root.classList?.contains('write-on')) {
+    animateWriteOn(root);
+  }
+
+  root.querySelectorAll?.('.write-on').forEach((element) => animateWriteOn(element));
 }
 
 function wireReveals() {
@@ -197,9 +207,7 @@ function wireReveals() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
-            if (entry.target.classList.contains('write-on')) {
-              animateWriteOn(entry.target);
-            }
+            animateWriteOnsWithin(entry.target);
             observer.unobserve(entry.target);
           }
         });
@@ -212,7 +220,10 @@ function wireReveals() {
 
     document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
   } else {
-    document.querySelectorAll('.reveal').forEach((element) => { element.classList.add('is-visible'); if (element.classList.contains('write-on')) animateWriteOn(element); });
+    document.querySelectorAll('.reveal').forEach((element) => {
+      element.classList.add('is-visible');
+      animateWriteOnsWithin(element);
+    });
   }
 }
 

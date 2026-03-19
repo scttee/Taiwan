@@ -282,8 +282,8 @@ h2 {
 .journal-card__story p {
   font-family: var(--font-serif);
   color: var(--muted);
-  line-height: 1.9;
-  font-size: 1.22rem;
+  line-height: 1.95;
+  font-size: clamp(1.28rem, 1.05rem + 0.55vw, 1.5rem);
 }
 
 .journal-card__meta {
@@ -410,4 +410,5 @@ h2 {
 
 .write-on {
   min-height: 1.2em;
+  text-wrap: balance;
 }
