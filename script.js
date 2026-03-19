@@ -122,22 +122,38 @@ function renderDayBlocks(day) {
     .join('');
 }
 
-function wireHeroImage() {
+function applyHeroImage(src) {
   const hero = document.querySelector('#hero');
   const photo = document.querySelector('#hero-photo');
 
-  if (!hero || !photo) return;
+  if (!hero || !photo || !src) return;
 
-  const candidateSrc = 'assets/hero-taipei.jpg';
   const loader = new window.Image();
 
   loader.onload = () => {
-    photo.src = candidateSrc;
+    photo.src = src;
     photo.hidden = false;
     hero.classList.add('hero--custom-image');
   };
 
-  loader.src = candidateSrc;
+  loader.src = src;
+}
+
+async function wireHeroImage() {
+  try {
+    const response = await fetch('api/latest-upload', { cache: 'no-store' });
+    if (response.ok) {
+      const data = await response.json();
+      if (data.path) {
+        applyHeroImage(data.path);
+        return;
+      }
+    }
+  } catch (error) {
+    // fall through to the default hero asset
+  }
+
+  applyHeroImage('assets/hero-taipei.jpg');
 }
 
 function wireReveals() {
