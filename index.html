@@ -3,226 +3,67 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Taiwan Bikepacking Journal</title>
+    <title>Taiwan Adventure</title>
     <meta
       name="description"
-      content="A postcard-style journal for a Taiwan bikepacking trip with daily stories, full-bleed imagery, map notes, and live tracking links."
+      content="A cinematic landing page for a Taiwan bikepacking adventure, ready to reveal daily notes, photos, food, music, and mileage over time."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Permanent+Marker&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Patrick+Hand&display=swap"
       rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="film-grain" aria-hidden="true"></div>
+    <div class="page-bg" aria-hidden="true"></div>
 
-    <header class="hero">
-      <nav class="topbar">
-        <p class="topbar__brand">Taiwan Journal</p>
-        <div class="topbar__links">
-          <a href="#story">Story</a>
-          <a href="#days">Days</a>
-          <a href="#live">Live links</a>
-          <a href="#map-section">Map</a>
-        </div>
-      </nav>
-
-      <div class="hero__image"></div>
-      <div class="hero__overlay"></div>
-
-      <div class="hero__content postcard">
-        <p class="eyebrow">Bikepacking Taiwan</p>
-        <h1>A moving postcard from the road.</h1>
-        <p class="hero__lede">
-          I’m riding my way around Taiwan, collecting sea-spray mornings, mountain-climb days, market dinners, tiny roadside rituals, and the kind of moments that deserve their own little page.
-        </p>
-        <div class="hero__actions">
-          <a class="button button--primary" href="#days">Open the journal</a>
-          <a class="button button--secondary" href="#live">Follow live</a>
-        </div>
-      </div>
-
-      <aside class="hero__note sticky-note">
-        <span class="sticky-note__pin"></span>
-        <p class="sticky-note__label">Trip note</p>
-        <p>
-          The goal is simple: pedal the island, post one honest memory each day, and make it easy for family and friends to dip in.
-        </p>
-      </aside>
-    </header>
-
-    <main>
-      <section id="story" class="intro layout-shell">
-        <div class="section-heading">
-          <p class="eyebrow">The concept</p>
-          <h2>Less blog, more travel keepsake.</h2>
+    <main class="landing">
+      <section class="hero-shell">
+        <div class="hero-art" aria-hidden="true">
+          <span class="sticker sticker--sun">☀️</span>
+          <span class="sticker sticker--bike">🚲</span>
+          <span class="sticker sticker--tea">🧋</span>
+          <span class="sticker sticker--mountain">⛰️</span>
+          <span class="sticker sticker--music">🎵</span>
+          <span class="sticker sticker--flag">🇹🇼</span>
+          <span class="sticker sticker--heart">❤️</span>
+          <span class="sticker sticker--camera">📷</span>
+          <span class="sticker sticker--dumpling">🥟</span>
+          <span class="sticker sticker--map">🗺️</span>
         </div>
 
-        <div class="intro__grid">
-          <article class="card card--warm">
-            <h3>What I’d do creatively</h3>
-            <p>
-              Build this like an evolving stack of postcards: each day gets a distinct mood, a full-page image, a few handwritten details, and a tiny set of facts so it feels cinematic without being fussy.
-            </p>
-          </article>
-
-          <article class="card">
-            <h3>What lives here</h3>
-            <ul>
-              <li>A short diary entry for each day</li>
-              <li>Big hero photos and collage fragments</li>
-              <li>Tracker links for Wahoo / Find My / maps</li>
-              <li>An interactive route map around Taiwan</li>
-              <li>Small details: snacks, climbs, weather, playlists</li>
-            </ul>
-          </article>
-
-          <article class="card card--taped quote-card">
-            <p>
-              “The best version of this site is something your parents can check in 30 seconds, while your friends can linger and scroll like a visual diary.”
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section id="days" class="days layout-shell">
-        <div class="section-heading section-heading--light">
-          <p class="eyebrow">Journal days</p>
-          <h2>Each day gets its own postcard mood.</h2>
-        </div>
-
-        <article class="day-panel day-panel--coast">
-          <div class="day-panel__image" role="img" aria-label="A coastal cycling road curving beside the sea"></div>
-          <div class="day-panel__card postcard postcard--right">
-            <p class="day-panel__day">Day 01 · Arrival energy</p>
-            <h3>Taipei starts loud, bright, and exciting.</h3>
-            <p>
-              This trip begins with all the classic first-day feelings: a rebuilt bike, slightly overpacked bags, total excitement, and a city that immediately feels alive.
-            </p>
-            <div class="day-panel__meta">
-              <span>Night market dinner</span>
-              <span>Temple smoke</span>
-              <span>Route planning over tea</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="day-panel day-panel--mountain reverse">
-          <div class="day-panel__image" role="img" aria-label="Mountains and mist over a Taiwan road"></div>
-          <div class="day-panel__card postcard postcard--left">
-            <p class="day-panel__day">Day 04 · Climb day</p>
-            <h3>Mist, switchbacks, and that earned descent.</h3>
-            <p>
-              Some days should feel softer and moodier. This one is all cloud cover, damp roads, quiet concentration, and the kind of downhill that makes the whole climb feel worth it.
-            </p>
-            <div class="day-panel__meta">
-              <span>Long climb</span>
-              <span>Rain jacket on / off / on</span>
-              <span>Convenience-store coffee</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="day-panel day-panel--market">
-          <div class="day-panel__image" role="img" aria-label="Warm evening lights and food market atmosphere"></div>
-          <div class="day-panel__card postcard postcard--stacked">
-            <p class="day-panel__day">Day 07 · Reset evening</p>
-            <h3>The perfect end: noodles, notes, and a full camera roll.</h3>
-            <p>
-              Not every highlight is a huge ride. Sometimes the best page is simply where I ate well, washed kit, backed up photos, and wandered until the night market won.
-            </p>
-            <div class="day-panel__meta">
-              <span>Beef noodles</span>
-              <span>Photo dump</span>
-              <span>Tomorrow’s route pencilled in</span>
-            </div>
-          </div>
-        </article>
-      </section>
-
-      <section id="live" class="live-strip layout-shell">
-        <div class="live-strip__copy">
-          <p class="eyebrow">Live follow</p>
-          <h2>Railway-friendly and easy to share.</h2>
-          <p>
-            I’ve set this up as a static site with a tiny Node server entry point, so it can deploy cleanly on Railway and still feel like a custom designed travel journal.
+        <div class="title-card">
+          <p class="eyebrow">Bikepacking journal</p>
+          <h1>Taiwan Adventure</h1>
+          <p class="subtitle">
+            A soft little landing page for the trip — the daily stories, photos, food notes, playlists, and ride stats can quietly appear here one day at a time.
           </p>
         </div>
+      </section>
 
-        <div class="live-strip__cards">
-          <a class="link-card" href="https://wahoofitness.com" target="_blank" rel="noreferrer">
-            <span>Wahoo</span>
-            <strong>Open tracker</strong>
-          </a>
-          <a class="link-card" href="https://www.icloud.com/find" target="_blank" rel="noreferrer">
-            <span>Find My</span>
-            <strong>See live location</strong>
-          </a>
-          <a class="link-card" href="https://maps.google.com" target="_blank" rel="noreferrer">
-            <span>Map pins</span>
-            <strong>Open saved places</strong>
-          </a>
-          <a class="link-card" href="https://wa.me" target="_blank" rel="noreferrer">
-            <span>WhatsApp</span>
-            <strong>Send a message</strong>
-          </a>
+      <section class="future-strip" aria-label="Planned trip details">
+        <p class="future-strip__label">To be revealed as the trip unfolds</p>
+        <div class="future-strip__items">
+          <span>Photos</span>
+          <span>Daily note</span>
+          <span>What I ate</span>
+          <span>What I listened to</span>
+          <span>Distance ridden</span>
+          <span>Map pins</span>
         </div>
       </section>
 
-      <section class="gallery-band">
-        <div class="gallery-band__image gallery-band__image--left" role="img" aria-label="A dramatic Taiwan coast at sunset"></div>
-        <div class="gallery-band__center postcard postcard--center">
-          <p class="eyebrow">Future photo moments</p>
-          <h2>Once your own images are in, this becomes the emotional heart of the site.</h2>
-          <p>
-            We can swap the placeholders for your actual photos and make certain days fully immersive with one big full-screen image, layered snapshots, captions, and route snippets.
-          </p>
+      <section class="journal-preview" aria-labelledby="day-001-title">
+        <div class="journal-preview__header">
+          <p class="eyebrow">Day 001</p>
+          <h2 id="day-001-title">Flying journey.</h2>
         </div>
-        <div class="gallery-band__image gallery-band__image--right" role="img" aria-label="A bicycle leaning beside a scenic road"></div>
-      </section>
-
-      <section id="map-section" class="map-section layout-shell">
-        <div class="section-heading">
-          <p class="eyebrow">Route log</p>
-          <h2>A simple live-feeling map of the lap.</h2>
-        </div>
-
-        <div class="map-section__grid">
-          <div class="map-frame">
-            <div id="map" aria-label="Interactive Taiwan route map"></div>
-          </div>
-
-          <aside class="route-summary card card--warm">
-            <h3>How I’d use this next</h3>
-            <p>
-              As the trip fills out, each pin can connect to a real day page, a mini gallery, or a short note about what happened there.
-            </p>
-            <ul>
-              <li><strong>Taipei:</strong> first spin, setup, excitement</li>
-              <li><strong>Jiufen:</strong> lanterns, weather, climbing legs</li>
-              <li><strong>Hualien:</strong> dramatic coast and huge scenery</li>
-              <li><strong>Taitung:</strong> reset day and food highlights</li>
-              <li><strong>Kenting:</strong> bright finish-line energy</li>
-            </ul>
-          </aside>
-        </div>
+        <div id="day-preview-root"></div>
       </section>
     </main>
 
-    <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin=""
-    ></script>
     <script src="script.js"></script>
   </body>
 </html>
