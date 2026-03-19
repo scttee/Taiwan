@@ -7,12 +7,12 @@ const futureFields = [
   'map pins'
 ];
 
-const days = [
+const fallbackDays = [
   {
     id: '001',
-    title: 'Flying journey',
+    title: 'In transit',
     summary:
-      'First movement, not first miles. Airports, transit, bike bags, anticipation, and the soft start before the road really begins.',
+      'Before the road, there is transit. Terminal light, stale cabin air, the weight of the bike box, and that thin line between leaving and arriving.',
     blocks: [
       {
         type: 'image',
@@ -21,23 +21,23 @@ const days = [
         image:
           'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80',
         eyebrow: 'Departure',
-        caption: 'The trip starts in the in-between.'
+        caption: 'The city falls away slowly. My head is crowded, but the body keeps moving.'
       },
       {
         type: 'text',
         offset: 'left',
-        text: 'You leave home before the adventure has a shape. It’s still just tickets, nerves, and possibility.'
+        text: 'Early light on the terminal glass. Coffee that barely touches the nerves. The bike box awkward against my legs. Nothing resolved. Just motion.'
       },
       {
         type: 'details',
         offset: 'right',
         story:
-          'A placeholder for the travel day itself: the airport blur, the boxed bike, coffee before boarding, playlists through the long haul, and that suspended feeling where the adventure has started even if the riding has not.',
+          'This day is all thresholds. Home behind me. Taiwan still ahead. I keep circling the same feeling: not fear exactly, not ease either. Just the strange quiet that comes when everything practical is done and there is nothing left but to go. The body knows it before the mind does. Shoulders tight. Breath shallow. Then, little by little, the space is opening.',
         details: [
-          { label: 'What I listened to', value: 'Departure playlists, cabin hum, and whatever matched the pre-ride nerves.' },
-          { label: 'What I ate', value: 'Airport coffee, plane snacks, and something simple after landing.' },
-          { label: 'Distance ridden', value: '0 km — only the journey in.' },
-          { label: 'Map pins', value: 'Home → airport → Taiwan arrival.' }
+          { label: 'What I listened to', value: 'Boarding calls, cabin air, a playlist low in my ears.' },
+          { label: 'What I ate', value: 'Airport coffee, something warm, something easy.' },
+          { label: 'Distance ridden', value: '0 km. Still here, not moving under my own power yet.' },
+          { label: 'Map pins', value: 'Home. Airport. Arrival. Foundations, not mileage.' }
         ]
       },
       {
@@ -47,12 +47,12 @@ const days = [
         image:
           'https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=1800&q=80',
         eyebrow: 'Arrival',
-        caption: 'New light, new air, new map to unfold.'
+        caption: 'The air changes first. Then the light. Then the small sense that something has opened.'
       },
       {
         type: 'text',
         offset: 'narrow',
-        text: 'Then the first quiet moment lands: the bike is here, you are here, and tomorrow becomes real.'
+        text: 'By the end of the day I am carrying the same body into a different place. Not settled. Not clear. But pointed somewhere.'
       }
     ]
   }
@@ -122,6 +122,24 @@ function renderDayBlocks(day) {
     .join('');
 }
 
+function wireHeroImage() {
+  const hero = document.querySelector('#hero');
+  const photo = document.querySelector('#hero-photo');
+
+  if (!hero || !photo) return;
+
+  const candidateSrc = 'assets/hero-taipei.jpg';
+  const loader = new window.Image();
+
+  loader.onload = () => {
+    photo.src = candidateSrc;
+    photo.hidden = false;
+    hero.classList.add('hero--custom-image');
+  };
+
+  loader.src = candidateSrc;
+}
+
 function wireReveals() {
   if ('IntersectionObserver' in window) {
     const observer = new window.IntersectionObserver(
@@ -145,20 +163,41 @@ function wireReveals() {
   }
 }
 
+async function loadDays() {
+  try {
+    const response = await fetch('content/day-001.json', { cache: 'no-store' });
+
+    if (!response.ok) {
+      return fallbackDays;
+    }
+
+    const day = await response.json();
+    return [day];
+  } catch (error) {
+    return fallbackDays;
+  }
+}
+
 if (typeof window !== 'undefined') {
   window.taiwanAdventureConfig = {
     mode: 'editorial-landing',
     revealStrategy: 'day-by-day',
     futureFields,
-    days
+    days: fallbackDays
   };
 
-  const firstDay = days[0];
   const panelsRoot = document.querySelector('#day-panels-root');
 
-  if (panelsRoot && firstDay) {
-    panelsRoot.innerHTML = renderDayBlocks(firstDay);
-  }
+  loadDays().then((days) => {
+    window.taiwanAdventureConfig.days = days;
 
-  wireReveals();
+    const firstDay = days[0];
+    if (panelsRoot && firstDay) {
+      panelsRoot.innerHTML = renderDayBlocks(firstDay);
+    }
+
+    wireReveals();
+  });
+
+  wireHeroImage();
 }
