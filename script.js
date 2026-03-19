@@ -104,7 +104,7 @@ function renderImageBlock(block) {
     >
       <div class="story-panel__overlay reveal">
         <p class="story-panel__eyebrow">${block.eyebrow}</p>
-        <p class="story-panel__caption">${block.caption}</p>
+        <p class="story-panel__caption write-on" data-full-text="${block.caption.replace(/"/g, '&quot;')}">${block.caption}</p>
       </div>
     </article>
   `;
@@ -113,7 +113,7 @@ function renderImageBlock(block) {
 function renderTextBlock(block) {
   return `
     <article class="story-panel story-panel--text ${blockOffsetClass(block.offset)} reveal" data-parallax>
-      <p class="story-fragment">${block.text}</p>
+      <p class="story-fragment write-on" data-full-text="${block.text.replace(/"/g, '&quot;')}">${block.text}</p>
     </article>
   `;
 }
@@ -162,6 +162,34 @@ async function wireHeroImage() {
   applyHeroImage('assets/hero-taipei.jpg');
 }
 
+
+function animateWriteOn(element) {
+  if (!element || element.dataset.animated === 'true') return;
+
+  const fullText = element.dataset.fullText || element.textContent || '';
+  element.dataset.animated = 'true';
+  element.textContent = '';
+
+  const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion) {
+    element.textContent = fullText;
+    return;
+  }
+
+  const chars = Array.from(fullText);
+  let index = 0;
+
+  const tick = () => {
+    index += 1;
+    element.textContent = chars.slice(0, index).join('');
+    if (index < chars.length) {
+      window.setTimeout(tick, 18);
+    }
+  };
+
+  tick();
+}
+
 function wireReveals() {
   if ('IntersectionObserver' in window) {
     const observer = new window.IntersectionObserver(
@@ -169,6 +197,9 @@ function wireReveals() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
+            if (entry.target.classList.contains('write-on')) {
+              animateWriteOn(entry.target);
+            }
             observer.unobserve(entry.target);
           }
         });
@@ -181,7 +212,7 @@ function wireReveals() {
 
     document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
   } else {
-    document.querySelectorAll('.reveal').forEach((element) => element.classList.add('is-visible'));
+    document.querySelectorAll('.reveal').forEach((element) => { element.classList.add('is-visible'); if (element.classList.contains('write-on')) animateWriteOn(element); });
   }
 }
 

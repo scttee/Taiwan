@@ -5,6 +5,8 @@
   --green: #153127;
   --green-soft: #254b3d;
   --text: #f3f0e8;
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Cormorant Garamond', serif;
   --muted: rgba(243, 240, 232, 0.72);
   --line: rgba(243, 240, 232, 0.1);
   --accent: #7ea87f;
@@ -23,7 +25,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   overflow-x: hidden;
 }
 
@@ -105,6 +107,7 @@ h2 {
 }
 
 h1 {
+  font-family: var(--font-serif);
   max-width: 9ch;
   font-size: clamp(4rem, 10vw, 8rem);
   line-height: 0.9;
@@ -159,6 +162,7 @@ h1 {
 }
 
 h2 {
+  font-family: var(--font-serif);
   font-size: clamp(2.8rem, 7vw, 6rem);
   line-height: 0.92;
   letter-spacing: -0.05em;
@@ -233,10 +237,12 @@ h2 {
   padding: 2rem;
   display: grid;
   gap: 0.55rem;
+  justify-items: center;
 }
 
 .story-panel__caption,
 .story-fragment {
+  font-family: var(--font-serif);
   font-size: clamp(1.5rem, 2.4vw, 2.6rem);
   line-height: 1;
   font-weight: 700;
@@ -247,15 +253,17 @@ h2 {
 }
 
 .story-fragment {
-  max-width: 13ch;
+  max-width: 16ch;
   padding: 0;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .story-panel__card {
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  padding: 0;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 1.25rem 1.4rem;
   box-shadow: none;
 }
 
@@ -270,6 +278,7 @@ h2 {
 }
 
 .journal-card__story p {
+  font-family: var(--font-serif);
   color: var(--muted);
   line-height: 1.8;
   font-size: 1.05rem;
@@ -282,18 +291,20 @@ h2 {
 }
 
 .meta-chip {
-  padding: 1rem 0;
+  padding: 0.95rem 0;
   border-top: 1px solid var(--line);
   border-radius: 0;
   background: transparent;
 }
 
 .detail-label {
+  font-family: var(--font-sans);
   display: block;
   margin-bottom: 0.45rem;
 }
 
 .meta-chip span {
+  font-family: var(--font-sans);
   display: block;
   color: var(--text);
   line-height: 1.55;
@@ -385,4 +396,14 @@ h2 {
   transform: translate3d(0, var(--parallax-offset, 0px), 0);
   transition: transform 220ms linear;
   will-change: transform;
+}
+
+
+.story-panel__caption {
+  max-width: 16ch;
+  text-align: center;
+}
+
+.write-on {
+  min-height: 1.2em;
 }
