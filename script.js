@@ -62,6 +62,10 @@ const fallbackDays = [
   }
 ];
 
+function escapeAttribute(value) {
+  return String(value ?? '').replace(/"/g, '&quot;');
+}
+
 function blockOffsetClass(offset) {
   if (offset === 'left') return 'story-panel--offset-left';
   if (offset === 'narrow') return 'story-panel--narrow';
@@ -104,7 +108,7 @@ function renderImageBlock(block) {
     >
       <div class="story-panel__overlay reveal">
         <p class="story-panel__eyebrow">${block.eyebrow}</p>
-        <p class="story-panel__caption write-on" data-full-text="${block.caption.replace(/"/g, '&quot;')}">${block.caption}</p>
+        <p class="story-panel__caption write-on" data-full-text="${escapeAttribute(block.caption)}">${block.caption}</p>
       </div>
     </article>
   `;
@@ -113,7 +117,7 @@ function renderImageBlock(block) {
 function renderTextBlock(block) {
   return `
     <article class="story-panel story-panel--text ${blockOffsetClass(block.offset)} reveal" data-parallax>
-      <p class="story-fragment write-on" data-full-text="${block.text.replace(/"/g, '&quot;')}">${block.text}</p>
+      <p class="story-fragment write-on" data-full-text="${escapeAttribute(block.text)}">${block.text}</p>
     </article>
   `;
 }
@@ -390,7 +394,7 @@ async function loadDays() {
   }
 }
 
-if (typeof window !== 'undefined') {
+function initializeApp() {
   window.taiwanAdventureConfig = {
     mode: 'editorial-landing',
     revealStrategy: 'day-by-day',
@@ -415,4 +419,8 @@ if (typeof window !== 'undefined') {
   });
 
   wireHeroImage();
+}
+
+if (typeof window !== 'undefined') {
+  initializeApp();
 }
