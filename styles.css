@@ -365,3 +365,17 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+
+
+.day-story__coordinates {
+  color: rgba(243, 240, 232, 0.62);
+  font-size: 0.92rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.story-panel {
+  transform: translate3d(0, var(--parallax-offset, 0px), 0);
+  transition: transform 220ms linear;
+  will-change: transform;
+}

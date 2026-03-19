@@ -13,6 +13,10 @@ const fallbackDays = [
     title: 'In transit',
     summary:
       'Before the road, there is transit. Terminal light, stale cabin air, the weight of the bike box, and that thin line between leaving and arriving.',
+    coordinates: {
+      lat: 25.033,
+      lon: 121.5654
+    },
     blocks: [
       {
         type: 'image',
@@ -66,7 +70,7 @@ function blockOffsetClass(offset) {
 
 function renderDetailsBlock(block) {
   return `
-    <article class="story-panel story-panel--details ${blockOffsetClass(block.offset)}">
+    <article class="story-panel story-panel--details ${blockOffsetClass(block.offset)}" data-parallax>
       <div class="story-panel__card reveal">
         <article class="journal-card">
           <div class="journal-card__story">
@@ -94,6 +98,7 @@ function renderImageBlock(block) {
   return `
     <article
       class="story-panel story-panel--image story-panel--${block.variant} ${blockOffsetClass(block.offset)}"
+      data-parallax
       style="background-image: linear-gradient(180deg, rgba(8, 12, 12, 0.1), rgba(8, 12, 12, 0.74)), url('${block.image}')"
     >
       <div class="story-panel__overlay reveal">
@@ -106,7 +111,7 @@ function renderImageBlock(block) {
 
 function renderTextBlock(block) {
   return `
-    <article class="story-panel story-panel--text ${blockOffsetClass(block.offset)} reveal">
+    <article class="story-panel story-panel--text ${blockOffsetClass(block.offset)} reveal" data-parallax>
       <p class="story-fragment">${block.text}</p>
     </article>
   `;
@@ -177,6 +182,51 @@ function wireReveals() {
   } else {
     document.querySelectorAll('.reveal').forEach((element) => element.classList.add('is-visible'));
   }
+}
+
+function wireParallax() {
+  const parallaxNodes = Array.from(document.querySelectorAll('[data-parallax]'));
+  if (parallaxNodes.length === 0) return;
+
+  const update = () => {
+    const viewportHeight = window.innerHeight || 1;
+
+    parallaxNodes.forEach((node) => {
+      const rect = node.getBoundingClientRect();
+      const progress = (rect.top + rect.height / 2 - viewportHeight / 2) / viewportHeight;
+      const offset = Math.max(-24, Math.min(24, progress * -18));
+      node.style.setProperty('--parallax-offset', `${offset}px`);
+    });
+  };
+
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+}
+
+function animateCoordinates(day) {
+  const coordinateNode = document.querySelector('#day-coordinates');
+  if (!coordinateNode || !day || !day.coordinates) return;
+
+  const targetLat = Number(day.coordinates.lat || 0);
+  const targetLon = Number(day.coordinates.lon || 0);
+  const duration = 1400;
+  const start = performance.now();
+
+  const frame = (now) => {
+    const progress = Math.min(1, (now - start) / duration);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const currentLat = targetLat * eased;
+    const currentLon = targetLon * eased;
+
+    coordinateNode.textContent = `Lat ${currentLat.toFixed(4)}° · Lon ${currentLon.toFixed(4)}°`;
+
+    if (progress < 1) {
+      window.requestAnimationFrame(frame);
+    }
+  };
+
+  window.requestAnimationFrame(frame);
 }
 
 async function loadDayPhotos(dayId) {
@@ -261,7 +311,9 @@ if (typeof window !== 'undefined') {
       panelsRoot.innerHTML = renderDayBlocks(firstDay);
     }
 
+    animateCoordinates(firstDay);
     wireReveals();
+    wireParallax();
   });
 
   wireHeroImage();
