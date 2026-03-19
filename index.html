@@ -6,7 +6,7 @@
     <title>Taiwan Adventure</title>
     <meta
       name="description"
-      content="An editorial Taiwan bikepacking journal with a dark cinematic landing page and a scrolling Day 001 story layout."
+      content="An editorial Taiwan bikepacking journal with a dark cinematic landing page and a flexible Day 001 photo-story layout."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -48,25 +48,7 @@
           </div>
         </aside>
 
-        <div class="day-story__panels">
-          <article class="story-panel story-panel--image story-panel--arrival">
-            <div class="story-panel__overlay">
-              <p class="story-panel__eyebrow">Departure</p>
-              <p class="story-panel__caption">The trip starts in the in-between.</p>
-            </div>
-          </article>
-
-          <article class="story-panel story-panel--details">
-            <div class="story-panel__card" id="day-preview-root"></div>
-          </article>
-
-          <article class="story-panel story-panel--image story-panel--descent">
-            <div class="story-panel__overlay">
-              <p class="story-panel__eyebrow">Arrival</p>
-              <p class="story-panel__caption">New light, new air, new map to unfold.</p>
-            </div>
-          </article>
-        </div>
+        <div class="day-story__panels" id="day-panels-root"></div>
       </section>
     </main>
 

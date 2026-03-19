@@ -154,7 +154,6 @@ h2 {
 
 .story-panel {
   position: relative;
-  min-height: 100vh;
   border-radius: 28px;
   overflow: hidden;
   background: var(--panel);
@@ -164,18 +163,46 @@ h2 {
 .story-panel--image {
   display: grid;
   align-items: end;
+  min-height: 82vh;
+  background-position: center;
+  background-size: cover;
 }
 
-.story-panel--arrival {
-  background:
-    linear-gradient(180deg, rgba(8, 12, 12, 0.08), rgba(8, 12, 12, 0.74)),
-    url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80') center/cover;
+.story-panel--portrait {
+  min-height: 98vh;
 }
 
-.story-panel--descent {
-  background:
-    linear-gradient(180deg, rgba(8, 12, 12, 0.12), rgba(8, 12, 12, 0.78)),
-    url('https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=1800&q=80') center/cover;
+.story-panel--landscape {
+  min-height: 68vh;
+}
+
+.story-panel--text {
+  min-height: 42vh;
+  display: grid;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(17, 23, 21, 0.92) 0%, rgba(10, 13, 12, 1) 100%);
+}
+
+.story-panel--details {
+  min-height: auto;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.story-panel--offset-right {
+  width: 91%;
+  margin-left: auto;
+}
+
+.story-panel--offset-left {
+  width: 84%;
+  margin-right: auto;
+}
+
+.story-panel--narrow {
+  width: 72%;
+  margin-left: 10%;
 }
 
 .story-panel__overlay {
@@ -184,18 +211,20 @@ h2 {
   gap: 0.55rem;
 }
 
-.story-panel__caption {
+.story-panel__caption,
+.story-fragment {
   font-size: clamp(1.5rem, 2.4vw, 2.6rem);
   line-height: 1;
   font-weight: 700;
+}
+
+.story-panel__caption {
   max-width: 14ch;
 }
 
-.story-panel--details {
-  min-height: auto;
-  background: transparent;
-  box-shadow: none;
-  overflow: visible;
+.story-fragment {
+  max-width: 13ch;
+  padding: 1.5rem 2rem;
 }
 
 .story-panel__card {
@@ -246,6 +275,26 @@ h2 {
   line-height: 1.55;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 700ms ease, transform 700ms ease;
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 @media (max-width: 900px) {
   .day-story {
     grid-template-columns: 1fr;
@@ -258,8 +307,17 @@ h2 {
   }
 
   .story-panel,
-  .story-panel--image {
+  .story-panel--image,
+  .story-panel--portrait,
+  .story-panel--landscape,
+  .story-panel--text {
     min-height: 72vh;
+    width: 100%;
+    margin: 0;
+  }
+
+  .story-panel--details {
+    min-height: auto;
   }
 }
 
@@ -281,7 +339,8 @@ h2 {
   }
 
   .story-panel__overlay,
-  .story-panel__card {
+  .story-panel__card,
+  .story-fragment {
     padding: 1.1rem;
   }
 
