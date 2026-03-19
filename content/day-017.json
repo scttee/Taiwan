@@ -1,0 +1,39 @@
+{
+  "id": "017",
+  "title": "Day 017",
+  "summary": "Waiting for notes, photos, coordinates, and the shape of the day.",
+  "coordinates": {
+    "lat": 0.0,
+    "lon": 0.0
+  },
+  "blocks": [
+    {
+      "type": "text",
+      "offset": "left",
+      "text": "Placeholder for the day. Add the words once the road has settled enough to write them down."
+    },
+    {
+      "type": "details",
+      "offset": "right",
+      "story": "This page is ready for the day to arrive.",
+      "details": [
+        {
+          "label": "What I listened to",
+          "value": "TBD"
+        },
+        {
+          "label": "What I ate",
+          "value": "TBD"
+        },
+        {
+          "label": "Distance ridden",
+          "value": "TBD"
+        },
+        {
+          "label": "Map pins",
+          "value": "TBD"
+        }
+      ]
+    }
+  ]
+}
