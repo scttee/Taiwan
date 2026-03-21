@@ -1,0 +1,10 @@
+{
+  "name": "taiwan-bikepacking-journal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Postcard-style Taiwan bikepacking journal site for Railway deployment.",
+  "scripts": {
+    "start": "node server.js",
+    "sort-photos": "python3 scripts/sort_photos.py"
+  }
+}
