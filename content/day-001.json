@@ -1,0 +1,70 @@
+{
+  "id": "001",
+  "title": "In transit",
+  "summary": "Too small in the seat, too aware of everything forgotten, then Hong Kong green under fog and the strange feeling of moving through a sky full of other lives.",
+  "blocks": [
+    {
+      "type": "image",
+      "variant": "portrait",
+      "offset": "right",
+      "image": "assets/photos/day-001/departure.jpg",
+      "eyebrow": "Departure",
+      "caption": "The feeling of being too small in your seat, squashed by the person next to you."
+    },
+    {
+      "type": "text",
+      "offset": "left",
+      "text": "Moving around constantly, thinking: did you pack everything? And then, yes, realising you definitely did not pack your tent poles."
+    },
+    {
+      "type": "details",
+      "offset": "right",
+      "story": "Flying into Hong Kong, everything was green but covered in fog. It felt like a strange metaphor for the trip itself — always thinking about what you will see next, but never quite seeing all of it at once. Then the transfer: more people passing you, more bags, more gates, more waiting. Weird to think about all the people in the sky at one time. Something you never really consider when you are lying on the grass on a summer day, staring upward, or wondering if someone thousands of kilometres away might be doing the same thing. Some strange sort of universal blanket.",
+      "details": [
+        {
+          "label": "Ate",
+          "value": "Delicious aeroplane corn fritters and too many KitKats."
+        },
+        {
+          "label": "Listened",
+          "value": "Jorja Smith and Zara Larsson."
+        },
+        {
+          "label": "Watched",
+          "value": "The Housemaid, Merrily We Go Along, and Anastasia."
+        },
+        {
+          "label": "Map pins",
+          "value": "Sydney. Hong Kong. The walking city at the end of the day."
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "variant": "landscape",
+      "offset": "left",
+      "image": "assets/photos/day-001/arrival.jpg",
+      "eyebrow": "Transit",
+      "caption": "Flying into Hong Kong surrounded by green, but fog — seeing enough to know there was more behind it."
+    },
+    {
+      "type": "text",
+      "offset": "narrow",
+      "text": "Finish: the walking city. Surprise — beautiful and quiet, people finishing for the day. Much sleep was needed."
+    }
+  ],
+  "extraPhotoCaptions": [
+    "The body kept shifting in the seat, trying to find space where there wasn't any.",
+    "Every small movement came with the same thought: surely you packed everything. Then the tent poles surfaced in your mind.",
+    "Airport light makes everyone look briefly suspended between where they were and where they are going.",
+    "Hong Kong appeared first as green under fog, more suggested than seen.",
+    "The transfer was all movement again — people passing, rolling bags, gates changing, time stretching strangely.",
+    "It is odd to remember how many people are in the sky at once, all of them carrying their own version of leaving.",
+    "Somewhere below, someone is probably lying in the grass looking up, not thinking about any of this at all.",
+    "By the end of it, the city felt quiet and unexpectedly beautiful, as if the day had finally exhaled."
+  ],
+  "coordinates": {
+    "lat": 25.033,
+    "lon": 121.5654
+  }
+}
