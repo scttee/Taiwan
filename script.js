@@ -347,6 +347,8 @@ function hydrateDayWithPhotos(day, localPhotos) {
     return day;
   }
 
+  const extraPhotoCaptions = Array.isArray(day.extraPhotoCaptions) ? day.extraPhotoCaptions : [];
+
   let photoIndex = 0;
   const blocks = day.blocks.map((block) => {
     if (block.type !== 'image') {
@@ -369,7 +371,7 @@ function hydrateDayWithPhotos(day, localPhotos) {
     cascade: extraIndex % 2 === 1,
     image: photo,
     eyebrow: `Photo ${String(photoIndex + extraIndex + 1).padStart(2, '0')}`,
-    caption: 'Still here. Another fragment from the day.'
+    caption: extraPhotoCaptions[extraIndex % extraPhotoCaptions.length] || 'Still here. Another fragment from the day.'
   }));
 
   return {
