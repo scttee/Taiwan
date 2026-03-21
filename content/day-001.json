@@ -1,7 +1,7 @@
 {
   "id": "001",
   "title": "In transit",
-  "summary": "Sydney before the airport. A run to loosen the body, coffee in hand, and that suspended hour of watching people move through departures.",
+  "summary": "Too small in the seat, too aware of everything forgotten, then Hong Kong green under fog and the strange feeling of moving through a sky full of other lives.",
   "blocks": [
     {
       "type": "image",
@@ -9,33 +9,33 @@
       "offset": "right",
       "image": "assets/photos/day-001/departure.jpg",
       "eyebrow": "Departure",
-      "caption": "The morning started in Sydney. Legs awake, coffee warm, departure boards glowing."
+      "caption": "The feeling of being too small in your seat, squashed by the person next to you."
     },
     {
       "type": "text",
       "offset": "left",
-      "text": "I ran before the airport because I needed to move. Just enough to wake the legs and quiet the noise a little. Then coffee, a seat, a book open but not really held for long. I kept looking up, wondering where everyone was going."
+      "text": "Moving around constantly, thinking: did you pack everything? And then, yes, realising you definitely did not pack your tent poles."
     },
     {
       "type": "details",
       "offset": "right",
-      "story": "Sydney felt clear and slightly unreal in that pre-departure way. The body had already started the day before the flight did. Feet on pavement. Breath working. Then the stillness of the terminal, where everything narrows into waiting. I sat there with coffee and read in fragments, more interested in faces, bags, departures, the pull of elsewhere. Excited, yes. But also aware of how thin the line is between ordinary routine and leaving.",
+      "story": "Flying into Hong Kong, everything was green but covered in fog. It felt like a strange metaphor for the trip itself — always thinking about what you will see next, but never quite seeing all of it at once. Then the transfer: more people passing you, more bags, more gates, more waiting. Weird to think about all the people in the sky at one time. Something you never really consider when you are lying on the grass on a summer day, staring upward, or wondering if someone thousands of kilometres away might be doing the same thing. Some strange sort of universal blanket.",
       "details": [
         {
-          "label": "What I listened to",
-          "value": "Midnight Sun \u2014 Zara Larsson."
+          "label": "Ate",
+          "value": "Delicious aeroplane corn fritters and too many KitKats."
         },
         {
-          "label": "What I ate",
-          "value": "Coffee before the airport, then whatever felt simple enough to travel with."
+          "label": "Listened",
+          "value": "Jorja Smith and Zara Larsson."
         },
         {
-          "label": "Distance ridden",
-          "value": "No riding yet. Just a run before departures."
+          "label": "Watched",
+          "value": "The Housemaid, Merrily We Go Along, and Anastasia."
         },
         {
           "label": "Map pins",
-          "value": "Sydney. Airport. The next point not visible yet."
+          "value": "Sydney. Hong Kong. The walking city at the end of the day."
         }
       ]
     },
@@ -44,17 +44,17 @@
       "variant": "landscape",
       "offset": "left",
       "image": "assets/photos/day-001/arrival.jpg",
-      "eyebrow": "Arrival",
-      "caption": "The air changes first. Then the light. Then the small sense that something has opened."
+      "eyebrow": "Transit",
+      "caption": "Flying into Hong Kong surrounded by green, but fog — seeing enough to know there was more behind it."
     },
     {
       "type": "text",
       "offset": "narrow",
-      "text": "By the end of the day I am carrying the same body into a different place. Not settled. Not clear. But pointed somewhere."
+      "text": "Finish: the walking city. Surprise — beautiful and quiet, people finishing for the day. Much sleep was needed."
     }
   ],
   "coordinates": {
-    "lat": -33.8688,
-    "lon": 151.2093
+    "lat": 25.033,
+    "lon": 121.5654
   }
 }
